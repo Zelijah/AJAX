@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<div id="demo"><h2>Let AJAX change this text</h2></div>
+
+<select id="people"></select>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<div id="demo"></div>
+    
+    
+    
+<script>
+function loadDoc() {
+//MAKING AN AJAX CALL    
+    
+//CREATING AN HTTP OBJECT  
+  var xhttp = new XMLHttpRequest();
+    
+//RECEIVING THE DATA REQUESTED FROM THE SERVER     
+  xhttp.onreadystatechange = function() {
+
+// CONDITIONS NEED TO BE MET FOR THE REQUEST TO BE SUCCESSFUL
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+// RECEIVING THE DATA
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+
+// OPENING THE HTTP REQUEST    
+  xhttp.open("GET", "person.json", true);
+// SEND THE REQUEST TO THE SERVER    
+  xhttp.send();
+}
+    
+// END AJAX CALL
+    
+</script>
+
+    
+    
+    
+</body>
+</html>
